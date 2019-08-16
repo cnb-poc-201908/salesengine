@@ -1,0 +1,102 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  application:
+    name: bmw-salesengine
+  datasource:
+    url: jdbc:postgresql://112.126.99.2:31543/postgres
+    username: postgresadmin
+    password: admin123
+server:
+  port: 20099
+  servlet:
+    context-path: /engine
+  
+# 服务管理配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"        #暴漏的接口，"*"表示所有web监控接口
+        exclude:            #不暴漏的接口
+      base-path: /actuator  #监控根路径
+  endpoint:
+    health:
+      show-details: ALWAYS
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true 
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+## 日志设置配置信息
+logging:
+  config: classpath:logback-boot_dev.xml
+
+
+#注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10001/eureka
+  instance:
+    prefer-ip-address: true
+#    securePortEnabled: true
+    instance-id: ${spring.application.name}:${server.port}
+
+swagger.enabled: true
+
+---
+spring:
+  profiles: k8s
+  application:
+    name: bmw-salesengine
+  datasource:
+    url: jdbc:postgresql://sales-postgresql.ai.svc.cluster.local:5432/postgres
+    username: postgresadmin
+    password: admin123
+server:
+  servlet:
+    context-path: /salesengine
+  port: 20099
+
+# 服务管理配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"        #暴漏的接口，"*"表示所有web监控接口
+        exclude:            #不暴漏的接口
+      base-path: /actuator  #监控根路径
+  endpoint:
+    health:
+      show-details: ALWAYS
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true 
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+## 日志设置配置信息
+logging:
+  config: classpath:logback-boot_k8s.xml
+
+#注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://bmw-register:10001/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+swagger.enabled: true
