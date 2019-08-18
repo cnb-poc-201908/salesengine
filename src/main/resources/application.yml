@@ -7,7 +7,7 @@ spring:
   application:
     name: bmw-salesengine
   datasource:
-    url: jdbc:postgresql://112.126.99.2:31543/postgres
+    url: jdbc:postgresql://112.126.99.2:31543/salesdb
     username: postgresadmin
     password: admin123
 server:
@@ -38,6 +38,11 @@ management:
 ## 日志设置配置信息
 logging:
   config: classpath:logback-boot_dev.xml
+  level:
+    com:
+      bmw:
+        salesengine:
+          mapper: debug
 
 
 #注册中心
@@ -58,7 +63,7 @@ spring:
   application:
     name: bmw-salesengine
   datasource:
-    url: jdbc:postgresql://sales-postgresql.ai.svc.cluster.local:5432/postgres
+    url: jdbc:postgresql://sales-postgresql.ai.svc.cluster.local:5432/salesdb
     username: postgresadmin
     password: admin123
 server:
