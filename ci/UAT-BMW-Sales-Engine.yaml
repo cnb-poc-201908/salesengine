@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: uat-bmw-salesengine
+  namespace: uat
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: uat-bmw-salesengine
+    spec:
+      containers:
+        - name: uat-bmw-salesengine
+          image: registry.cn-beijing.aliyuncs.com/bmwpoc/uat-bmw-salesengine:{version}
+          ports:
+            - name: http-port
+              containerPort: 20099
+          env:
+            - name: spring_profiles_active
+              value: k8s
+      imagePullSecrets:
+        - name: bmwpoc
