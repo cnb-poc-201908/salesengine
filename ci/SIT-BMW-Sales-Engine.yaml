@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: sit-bmw-salesengine
-          image: registry.cn-beijing.aliyuncs.com/bmwpoc/sit-bmw-salesengine:{version}
+          image: registry.cn-beijing.aliyuncs.com/bmwpoc/sit-bmw-sales-engine:{version}
           ports:
             - name: http-port
               containerPort: 20099
