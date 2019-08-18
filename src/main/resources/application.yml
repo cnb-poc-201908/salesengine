@@ -38,11 +38,6 @@ management:
 ## 日志设置配置信息
 logging:
   config: classpath:logback-boot_dev.xml
-  level:
-    com:
-      bmw:
-        salesengine:
-          mapper: debug
 
 
 #注册中心
