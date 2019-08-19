@@ -46,7 +46,7 @@ public class ApiController {
 	}
 
 	@RequestMapping(value = "/dealerreport", method = RequestMethod.GET, produces = "application/json")
-	@ApiOperation(value = "匹配报告信息查询")
+	@ApiOperation(value = "经销商匹配报告信息查询")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "查询成功"), @ApiResponse(code = 400, message = "错误的请求"),
 			@ApiResponse(code = 401, message = "没有权限查看此资源"), @ApiResponse(code = 404, message = "资源不存在"),
 			@ApiResponse(code = 500, message = "内部错误请联系管理员") })
