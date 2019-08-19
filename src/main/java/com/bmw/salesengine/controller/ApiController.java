@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class ApiController {
 	@Autowired
 	private ReportMapper reportMapper;
 
-	@RequestMapping(value = "/report", method = RequestMethod.GET, produces = "application/json")
+	@GetMapping(value = "/report", produces = "application/json")
 	@ApiOperation(value = "匹配报告信息查询")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "查询成功"), @ApiResponse(code = 400, message = "错误的请求"),
 			@ApiResponse(code = 401, message = "没有权限查看此资源"), @ApiResponse(code = 404, message = "资源不存在"),
@@ -45,7 +46,7 @@ public class ApiController {
 
 	}
 
-	@RequestMapping(value = "/dealerreport", method = RequestMethod.GET, produces = "application/json")
+	@GetMapping(value = "/dealerreport", produces = "application/json")
 	@ApiOperation(value = "经销商匹配报告信息查询")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "查询成功"), @ApiResponse(code = 400, message = "错误的请求"),
 			@ApiResponse(code = 401, message = "没有权限查看此资源"), @ApiResponse(code = 404, message = "资源不存在"),
