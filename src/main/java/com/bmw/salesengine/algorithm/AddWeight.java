@@ -188,6 +188,7 @@ public class AddWeight {
 	
 	
 	public void processPhaseAddCode(ArrayList<Object> phasetwo, ArrayList<Object> dealermodels) {
+		System.out.println(phasetwo);
 
 		for (int i = 0; i < phasetwo.size(); i++) {
 			// System.out.println(phasetwo.get(i).toString());

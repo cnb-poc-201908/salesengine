@@ -218,7 +218,6 @@ public class Aggregation {
 			} else {
 				// String gn = phase.get(i).toString().split("!!")[0];
 				// System.out.println("pahseTwo");
-				// System.out.println(phase.get(i));
 				phase2.add(phase.get(i));
 			}
 		}

@@ -69,20 +69,23 @@ public class RecursiveGroup {
 				addweightSvc.processPhaseConfig(paseRecursiveTwo, dealermodel);
 
 
+			} else if (oemmodel.get(x).equals("addCode")) {
+				
+				List<GroupModel> group6materials = materials.group6Materials();
+
+				List<GroupModel> group6order = orders.group6Order();
+
+				ArrayList<Object> phaseRecursiveGroup = GenerateGroup.iterateMatch(group6materials, group6order);
+
+				ArrayList<Object> paseRecursiveTwo = aggreationSvc.processRecursiveAddCode(phaseRecursiveGroup);
+					
+				addweightSvc.processPhaseAddCode(paseRecursiveTwo, dealermodel);
+
+				
 			}
+			
 
 		}
-		
-		List<GroupModel> group6materials = materials.group6Materials();
-
-		List<GroupModel> group6order = orders.group6Order();
-
-		ArrayList<Object> phaseRecursiveGroup = GenerateGroup.iterateMatch(group6materials, group6order);
-
-		ArrayList<Object> paseRecursiveTwo = aggreationSvc.processRecursiveAddCode(phaseRecursiveGroup);
-			
-		addweightSvc.processPhaseAddCode(paseRecursiveTwo, dealermodel);
-
 		
 
 	}
