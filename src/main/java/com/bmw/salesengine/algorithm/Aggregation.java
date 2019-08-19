@@ -196,8 +196,7 @@ public class Aggregation {
 		return phase2;
 
 	}
-	
-	
+
 	public ArrayList<Object> processRecursiveAddCode(ArrayList<Object> phase) {
 
 		ArrayList<Object> phase2 = new ArrayList<>();

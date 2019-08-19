@@ -77,6 +77,12 @@ public class EngineController {
 			@ApiResponse(code = 401, message = "没有权限查看此资源"), @ApiResponse(code = 404, message = "资源不存在"),
 			@ApiResponse(code = 500, message = "内部错误请联系管理员") })
 	public ResponseEntity<RspModel> enable() {
+		
+		//Init pahse
+		System.out.println("===================> Reset match");
+		materialsidmapper.resetMaterialsId();
+		
+		orderidmapper.resetOrderId();
 
 		ResponseEntity<Object> result = modelclient.getModels();
 
@@ -89,18 +95,13 @@ public class EngineController {
 		List<GroupModel> groupmaterials = materialsmapper.groupMaterials();
 
 		List<GroupModel> grouporder = ordermapper.groupOrder();
-		
-		//Init pahse
-		System.out.println("===================> Reset match");
-		materialsidmapper.resetMaterialsId();
-		
-		orderidmapper.resetOrderId();
 
 
 		// pahse1
 		System.out.println("===================> Pahse 1 ");
 
 		ArrayList<Object> phaseOne = GenerateGroup.iterateMatch(groupmaterials, grouporder);
+
 		ArrayList<Object> paseTwo = aggreationSvc.processPhaseOne(phaseOne);
 
 		// pahse2
