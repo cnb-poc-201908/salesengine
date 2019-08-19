@@ -1,7 +1,6 @@
 package com.bmw.salesengine.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -90,14 +89,24 @@ public class EngineController {
 		List<GroupModel> groupmaterials = materialsmapper.groupMaterials();
 
 		List<GroupModel> grouporder = ordermapper.groupOrder();
+		
+		//Init pahse
+		System.out.println("===================> Reset match");
+		materialsidmapper.resetMaterialsId();
+		
+		orderidmapper.resetOrderId();
+
 
 		// pahse1
+		System.out.println("===================> Pahse 1 ");
 
 		ArrayList<Object> phaseOne = GenerateGroup.iterateMatch(groupmaterials, grouporder);
 		ArrayList<Object> paseTwo = aggreationSvc.processPhaseOne(phaseOne);
 
 		// pahse2
+		System.out.println("===================> Pahse 2 ");
 		addweightSvc.processPhaseTwo(paseTwo, sortedmodel);
+		
 
 		// pahse3
 
@@ -126,6 +135,7 @@ public class EngineController {
 
 		recursiveGroup.processRecusive(sortedoemmodel, sortedmodel);
 
+		System.out.println("===================> Pahse 3 ");
 		// pahse4 similarity
 
 		List<GroupSimilar> materials = materialsmapper.groupSimilar();
